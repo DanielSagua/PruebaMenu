@@ -60,6 +60,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 priceSpan.textContent = `$${itemPrice.toFixed(2)}`;
                 listItem.appendChild(priceSpan);
 
+                const removeButton = document.createElement('button');
+                removeButton.className = 'btn btn-danger btn-sm ml-2';
+                removeButton.textContent = 'X';
+                removeButton.addEventListener('click', function() {
+                    listItem.remove();
+                    totalPrice -= itemPrice;
+                    totalPriceInput.value = `$${totalPrice.toFixed(2)}`;
+                });
+                listItem.appendChild(removeButton);
+
                 orderItems.appendChild(listItem);
 
                 totalPrice += itemPrice;
@@ -75,7 +85,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     submitOrderButton.addEventListener('click', function() {
-        alert('Pedido enviado!');
+        alert('Pedido enviado! \nEl total es: ' + totalPriceInput.value);
         orderItems.innerHTML = '';
         totalPriceInput.value = '';
         totalPrice = 0;
