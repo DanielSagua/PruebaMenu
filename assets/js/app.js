@@ -86,8 +86,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     submitOrderButton.addEventListener('click', function() {
         alert('Pedido enviado! \nEl total es: ' + totalPriceInput.value);
-        orderItems.innerHTML = '';
-        totalPriceInput.value = '';
-        totalPrice = 0;
+        location.reload(); // Recargar la página para volver al estado inicial
     });
 });
